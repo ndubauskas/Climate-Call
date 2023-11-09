@@ -20,6 +20,7 @@
 		064896E02AEAF24E00873FB7 /* Weather Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064896DF2AEAF24E00873FB7 /* Weather Manager.swift */; };
 		064896E22AEB0DB500873FB7 /* Weather Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064896E12AEB0DB500873FB7 /* Weather Data.swift */; };
 		064896E42AEC0F6A00873FB7 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064896E32AEC0F6A00873FB7 /* WeatherModel.swift */; };
+		06ECC0282AF96C1500218A9E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECC0272AF96C1500218A9E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		064896DF2AEAF24E00873FB7 /* Weather Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather Manager.swift"; sourceTree = "<group>"; };
 		064896E12AEB0DB500873FB7 /* Weather Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather Data.swift"; sourceTree = "<group>"; };
 		064896E32AEC0F6A00873FB7 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		06ECC0272AF96C1500218A9E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		06ECC0292AFD5AC900218A9E /* Climate Call.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Climate Call.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 		064896A82AEAEC3500873FB7 /* Climate Call */ = {
 			isa = PBXGroup;
 			children = (
+				06ECC0292AFD5AC900218A9E /* Climate Call.entitlements */,
 				064896DD2AEAEC5500873FB7 /* Model */,
 				064896DC2AEAEC4900873FB7 /* View */,
 				064896DE2AEAEC5900873FB7 /* Controller */,
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				064896AD2AEAEC3500873FB7 /* WeatherViewController.swift */,
+				06ECC0272AF96C1500218A9E /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				064896E22AEB0DB500873FB7 /* Weather Data.swift in Sources */,
 				064896AC2AEAEC3500873FB7 /* SceneDelegate.swift in Sources */,
 				064896B42AEAEC3500873FB7 /* Climate_Call.xcdatamodeld in Sources */,
+				06ECC0282AF96C1500218A9E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,9 +481,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Climate Call/Climate Call.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4DTKARPH32;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Climate Call/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -492,6 +500,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ndubauskas.Climate-Call";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -503,9 +512,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Climate Call/Climate Call.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4DTKARPH32;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Climate Call/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -520,6 +531,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ndubauskas.Climate-Call";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

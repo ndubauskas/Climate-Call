@@ -9,7 +9,8 @@ import UIKit
 import CoreLocation
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var settingsLabel: UIBarButtonItem!
+ 
+    @IBOutlet weak var settingsLabel: UIButton!
     @IBOutlet weak var locationLabel: UIButton!
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
@@ -21,6 +22,10 @@ class WeatherViewController: UIViewController {
     let locationManager = CLLocationManager()
     private var gradientLayer: CAGradientLayer?
     var weatherColor: Int = 0
+    var hexColor: UIColor = .white
+    var temp: Double = 0.0
+    var lowTemp: Double = 0.0
+    var highTemp: Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
@@ -31,7 +36,22 @@ class WeatherViewController: UIViewController {
         
     }
 
-  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "goToSettings"){
+            if let settingsVC = segue.destination as? SettingsViewController{
+                settingsVC.weatherColor = weatherColor
+                settingsVC.hexColor = hexColor
+                settingsVC.temp = temp
+                settingsVC.highTemp = highTemp
+                settingsVC.lowTemp = lowTemp
+               
+            }
+        }
+    }
+    @IBAction func settingButtnoPressed(_ sender: Any) {
+    performSegue(withIdentifier: "goToSettings", sender: self)
+    }
+    
     @IBAction func getCurrentLocationPressed(_ sender: Any) {
         locationManager.requestLocation()
     }
@@ -61,6 +81,7 @@ extension WeatherViewController: UITextFieldDelegate{
                 city = (city as NSString).replacingOccurrences(of: " ", with: "+")
             }
             weatherManager.fetchWeather(cityName: city)
+           
         }
         
         searchTextField.text = ""
@@ -69,7 +90,7 @@ extension WeatherViewController: UITextFieldDelegate{
     func updateUI(_ weatherColor: Int){
         self.gradientLayer?.removeFromSuperlayer()
         let newGradientLayer = CAGradientLayer()
-        let hexColor = UIColor(hex: weatherColor)
+        hexColor = UIColor(hex: weatherColor)
         newGradientLayer.colors = [hexColor.cgColor, UIColor.white.cgColor]
         newGradientLayer.locations = [0.0, 1.0]
         newGradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
@@ -77,7 +98,6 @@ extension WeatherViewController: UITextFieldDelegate{
         newGradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         self.view.layer.insertSublayer(newGradientLayer, at: 0)
         self.gradientLayer = newGradientLayer
-       // print(weatherColor.accessibilityName)
         
         if weatherColor == 0xE1DE2A {
             cityLabel.textColor = .black
@@ -87,6 +107,8 @@ extension WeatherViewController: UITextFieldDelegate{
             temperatureLabel.textColor = .black
             settingsLabel.tintColor = .black
             locationLabel.tintColor = .black
+            settingsLabel.tintColor = .black
+            
            
         }
         else{
@@ -96,6 +118,7 @@ extension WeatherViewController: UITextFieldDelegate{
             highTempLabel.textColor = .white
             temperatureLabel.textColor = .white
             locationLabel.tintColor = .white
+            settingsLabel.tintColor = .white
         }
 
         
@@ -107,12 +130,16 @@ extension WeatherViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
            DispatchQueue.main.async { [self] in
                temperatureLabel.text = weather.temperatureString + "°"
-                weatherColor = getWeatherColor(weather: weather)
+               weatherColor = getWeatherColor(weather: weather)
                updateUI(weatherColor)
                conditionImageView.image = UIImage(systemName: weather.conditionName)
                cityLabel.text = weather.cityName
                lowTempLabel.text = "L: " + weather.lowTempString + "°"
                highTempLabel.text = "H: " + weather.highTempString + "°"
+               temp = weather.temperature
+               lowTemp = weather.lowTemp
+               highTemp = weather.highTemp
+               
           }
        }
 
@@ -126,6 +153,10 @@ extension WeatherViewController: WeatherManagerDelegate{
         
         switch Int(weather.temperature){
         
+            
+        //Dark Gray
+        case Int(weather.temperature) where Int(weather.temperature) < 20:
+            return 0x2C3644
         //Dark Blue
         case 20...40:
             return 0x001596
