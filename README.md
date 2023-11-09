@@ -2,11 +2,15 @@
 Climate Call is a simple weather app that allows users to check the current weather conditions using data from the OpenWeather API. Additionally, it offers a convenient feature to schedule weather notifications on specific days and times.
 
 ## Features
+
 •	Current Weather: Get real-time weather updates based on your location using the OpenWeather API.
+
 •	Scheduled Notifications: Set up notifications to receive weather updates at specific days and times of your choice.
+
 # Getting Started
 
 ## Prerequisites
+
 Before you begin, ensure you have the following:
 •	An OpenWeather API key. You can obtain one by signing up on the OpenWeather website: https://openweathermap.org/
 
