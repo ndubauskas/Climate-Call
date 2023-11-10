@@ -26,6 +26,9 @@ class WeatherViewController: UIViewController {
     var temp: Double = 0.0
     var lowTemp: Double = 0.0
     var highTemp: Double = 0.0
+    var localTemp: Double = 0.0
+    var localLowTemp: Double = 0.0
+    var localHighTemp: Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
@@ -33,6 +36,7 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
         
     }
 
@@ -130,7 +134,7 @@ extension WeatherViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
            DispatchQueue.main.async { [self] in
                temperatureLabel.text = weather.temperatureString + "°"
-               weatherColor = getWeatherColor(weather: weather)
+               weatherColor = getWeatherColor(weather)
                updateUI(weatherColor)
                conditionImageView.image = UIImage(systemName: weather.conditionName)
                cityLabel.text = weather.cityName
@@ -148,7 +152,7 @@ extension WeatherViewController: WeatherManagerDelegate{
         
     }
 
-    func getWeatherColor(weather: WeatherModel) ->Int{
+    func getWeatherColor(_ weather: WeatherModel) ->Int{
 
         
         switch Int(weather.temperature){

@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController{
     @IBOutlet weak var friLabel: UIButton!
     @IBOutlet weak var satLabel: UIButton!
     @IBOutlet weak var sunLabel: UIButton!
-    @IBOutlet weak var scheduleTextLabel: UILabel!
+    @IBOutlet weak var confirmScheduleLabel: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     var weatherColor: Int = 0
     var selectedDays = [String]()
@@ -59,8 +59,8 @@ class SettingsViewController: UIViewController{
         satLabel.clipsToBounds = true
         sunLabel.layer.cornerRadius = sunLabel.frame.size.height / 2
         sunLabel.clipsToBounds = true
-        scheduleTextLabel.layer.cornerRadius = scheduleTextLabel.frame.size.height / 2
-        scheduleTextLabel.clipsToBounds = true
+        confirmScheduleLabel.layer.cornerRadius = confirmScheduleLabel.frame.size.height / 4
+        confirmScheduleLabel.clipsToBounds = true
         
         if let savedDays = UserDefaults.standard.dictionary(forKey: "SavedDaysDictionary") as? [String: Bool] {
             daysDictionary = savedDays
@@ -80,7 +80,7 @@ class SettingsViewController: UIViewController{
             
             let message = "The current temperature is \(temp) with a high of: \(highTemp) and a low of: \(lowTemp)"
             
-            scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
+           scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
         }
       
         
@@ -95,14 +95,9 @@ class SettingsViewController: UIViewController{
         }
      
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        let message = "The current temperature is \(temp) with a high of: \(highTemp) and a low of: \(lowTemp)"
-        scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
-        print("View going away")
-    }
+ 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
        
-       // completionHandler([.alert, .sound, .badge])
         print("in first complettion hander")
         completionHandler([.banner, .list, .sound, .badge])
     }
@@ -113,19 +108,21 @@ class SettingsViewController: UIViewController{
         completionHandler()
     }
     func tagForDay(_ day: String) -> Int {
-        switch day {
-        case "Monday": return 1
-        case "Tuesday": return 2
-        case "Wednesday": return 3
-        case "Thursday" : return 4
-        case "Friday": return 5
-        case "Saturday": return 6
-        case "Sunday": return 7
-        default: return 0
+
+        guard let weekday = DayOfWeek.fromLowercasedString(day.lowercased())?.weekday else{
+            return 0
         }
+        print("returning weekday \(weekday)")
+        return weekday
     }
 
 
+    @IBAction func confirmSchedulePressed(_ sender: Any) {
+        let message = "The current temperature is \(temp) with a high of: \(highTemp) and a low of: \(lowTemp)"
+        
+        scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
+
+    }
     
     @IBAction func dayButton(_ sender: UIButton){
         
@@ -142,10 +139,10 @@ class SettingsViewController: UIViewController{
     @IBAction func datePickerValueChanged(_ sender: Any) {
         selectedDate = datePicker.date
         
-        //selectedDate = getLocalTime(selectedDate)
-        let message = "The current temperature is \(temp) with a high of: \(highTemp) and a low of: \(lowTemp)"
-        
-        scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
+      //  selectedDate = getLocalTime(selectedDate)
+//        let message = "The current temperature is \(temp) with a high of: \(highTemp) and a low of: \(lowTemp)"
+//
+//        scheduleLocalNotifications(selectedDays: selectedDays, selectedTime: selectedDate, message: message)
         print("timezoneoffSet \(selectedDate)")
            UserDefaults.standard.set(selectedDate, forKey: "SelectedDateKey")
            print("Selected date at changing value: \(selectedDate)")
@@ -178,22 +175,22 @@ class SettingsViewController: UIViewController{
             for day in selectedDays {
                 print("Processing day: \(day)")
                 
-                guard let weekday = DayOfWeek(rawValue: day.lowercased())?.weekday else {
+                guard let weekday = DayOfWeek.fromLowercasedString(day)?.weekday else {
                     print("Invalid day: \(day)")
                     continue
                 }
                 
-                let localTime = getLocalTime(selectedDate)
+             //   let localTime = getLocalTime(selectedDate)
                 var dateComponents = DateComponents()
                 dateComponents.weekday = weekday
                 dateComponents.hour = Calendar.current.component(.hour, from: selectedTime)
                 dateComponents.minute = Calendar.current.component(.minute, from: selectedTime)
                 dateComponents.timeZone = TimeZone.current
-                print("=====|DATE COMPONENTS|====== \n \(dateComponents)")
+              //  print("=====|DATE COMPONENTS|====== \n \(dateComponents)")
                 
 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                print("Trigger info \(trigger)")
+            //    print("Trigger info \(trigger)")
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
                 
@@ -201,8 +198,8 @@ class SettingsViewController: UIViewController{
                     if let error = error {
                         print("Error scheduling notification for \(day): \(error)")
                     } else {
-                        print("Notification scheduled for \(day) at \(selectedTime)")
-                        print("Notif for local time for \(day) at \(localTime)")
+                      //  print("Notification scheduled for \(day) at \(selectedTime)")
+                      //  print("Notif for local time for \(day) at \(localTime)")
                     }
                 }
             }
@@ -213,17 +210,21 @@ class SettingsViewController: UIViewController{
         
         var weekday: Int {
             switch self {
-            case .sunday: return 7
-            case .monday: return  1
-            case .tuesday: return 2
-            case .wednesday: return 3
-            case .thursday: return 4
-            case .friday: return 5
-            case .saturday: return 6
+            case .sunday: return 1
+            case .monday: return 2
+            case .tuesday: return 3
+            case .wednesday: return 4
+            case .thursday: return 5
+            case .friday: return 6
+            case .saturday: return 7
             }
         }
-    }
 
+        // Add a method to get the enum case from a lowercase string
+        static func fromLowercasedString(_ lowercasedString: String) -> DayOfWeek? {
+            return DayOfWeek(rawValue: lowercasedString.lowercased())
+        }
+    }
 
 
     
