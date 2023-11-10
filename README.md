@@ -3,7 +3,7 @@ Climate Call is a simple weather app that allows users to check the current weat
 
 ## Features
 
-•	Current Weather: Get real-time weather updates based on your location using the OpenWeather API.
+•	Current Weather: Get real-time weather updates based on your location or searched city using the OpenWeather API.
 <img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherSOCOLD.png" width="30%">
 <img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherCold.png" width="30%">
 <img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilly.png" width="30%">
