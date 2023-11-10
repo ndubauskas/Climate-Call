@@ -4,8 +4,19 @@ Climate Call is a simple weather app that allows users to check the current weat
 ## Features
 
 •	Current Weather: Get real-time weather updates based on your location using the OpenWeather API.
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherSOCOLD.png" width="30%">
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherCold.png" width="30%">
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilly.png" width="30%">
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherMid.png" width="30%">
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherWarm.png" width="30%">
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherHot.png" width="30%">
+
+
 
 •	Scheduled Notifications: Set up notifications to receive weather updates at specific days and times of your choice.
+
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/settings.png" width="30%">
+
 
 # Getting Started
 
@@ -42,7 +53,9 @@ Contributions are welcome! If you have any ideas, improvements, or bug fixes, fe
 This project is licensed under the MIT License.
 
 ## Acknowledgments
-•	Thanks to OpenWeather for providing the weather data.
+Thanks to OpenWeather for providing the weather data.
+
+App Icon designed by FreePik from www.flaticon.com
 
 ## Contact
 For any questions or feedback, please contact ndubauskas95@yahoo.com.
