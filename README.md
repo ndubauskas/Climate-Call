@@ -4,18 +4,26 @@ Climate Call is a simple weather app that allows users to check the current weat
 ## Features
 
 •	Current Weather: Get real-time weather updates based on your location or searched city using the OpenWeather API.
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherSOCOLD.png" width="30%">
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherCold.png" width="30%">
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilly.png" width="30%">
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherMid.png" width="30%">
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherWarm.png" width="30%">
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherHot.png" width="30%">
+
+<table>
+  <tr>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherSOCOLD.png" width="80%"></td>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherCold.png" width="80%"></td>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilly.png" width="80%"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherMid.png" width="80%"></td>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherWarm.png" width="80%"></td>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherHot.png" width="80%"></td>
+  </tr>
+</table>
 
 
 
-•	Scheduled Notifications: Set up notifications to receive weather updates at specific days and times of your choice.
 
-<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/settings.png" width="30%">
+•	Schedule Notifications based on the days of the week and time.
+
+<img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/settings.png" width="25%">
 
 
 # Getting Started
