@@ -9,7 +9,7 @@ Climate Call is a simple weather app that allows users to check the current weat
   <tr>
     <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherSOCOLD.png" width="80%"></td>
     <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherCold.png" width="80%"></td>
-    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilly.png" width="80%"></td>
+    <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherChilled.png" width="80%"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/ndubauskas/Climate-Call/blob/main/Images/weatherMid.png" width="80%"></td>
