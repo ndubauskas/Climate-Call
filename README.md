@@ -41,9 +41,9 @@ Paste in "https://api.openweathermap.org/data/2.5/weather?appid=YOUR API KEY"
 ## Usage
 •	Open the app, and it will automatically fetch and display the current weather based on your location.
 •	To schedule notifications:
-1.	Navigate to the notification settings.
-2.	Choose the day and time for the notification.
-3.	Save the settings.
+1.	Choose the day and time for the notification.
+2.	Click Confirm Schedule.
+3.	Make sure Notifications are turned on for the app.
 •	Receive timely weather notifications at the scheduled days and times.
 
 ## Contributing
