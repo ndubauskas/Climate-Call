@@ -103,7 +103,7 @@ extension WeatherViewController: UITextFieldDelegate{
         self.view.layer.insertSublayer(newGradientLayer, at: 0)
         self.gradientLayer = newGradientLayer
         
-        if weatherColor == 0xE1DE2A {
+        if weatherColor == 0xE1DE2A || weatherColor == 0x00D2F0 {
             cityLabel.textColor = .black
             conditionImageView.tintColor = .black
             lowTempLabel.textColor = .black
