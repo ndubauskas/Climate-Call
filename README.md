@@ -36,7 +36,7 @@ Before you begin, ensure you have the following:
 ## Installation
 1.	Clone the repository:
 bashCopy code
-git clone https://github.com/your-username/climate-call.git
+git clone https://github.com/ndubauskas/climate-call.git
 
 2.  Sign into openweathermap account:
 Click on account, then My API keys
